@@ -114,12 +114,12 @@
 
             <a class="navbar-brand site-brand"
                href="${pageContext.request.contextPath}/home"
-               aria-label="JPAExercise Home">
+               aria-label="SpringBoot Store Home">
 
-                <span class="site-brand__mark" aria-hidden="true">J</span>
+                <img class="site-brand__mark" src="${pageContext.request.contextPath}/assets/images/logo.svg" alt="" aria-hidden="true" width="30" height="30" />
 
                 <span class="site-brand__text">
-                    JPAExercise
+                    SpringBoot Store
                 </span>
 
             </a>

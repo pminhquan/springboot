@@ -8,9 +8,9 @@
 <main class="auth-shell">
 
     <div class="d-flex align-items-center justify-content-between mb-4">
-        <a href="${pageContext.request.contextPath}/home" class="auth-brand mb-0" aria-label="JPAExercise Home">
-            <span class="auth-brand__mark" aria-hidden="true">J</span>
-            <span class="auth-brand__text">JPAExercise</span>
+        <a href="${pageContext.request.contextPath}/home" class="auth-brand mb-0" aria-label="SpringBoot Store Home">
+            <img class="auth-brand__mark" src="${pageContext.request.contextPath}/assets/images/logo.svg" alt="" aria-hidden="true" width="28" height="28" />
+            <span class="auth-brand__text">SpringBoot Store</span>
         </a>
         <a href="${pageContext.request.contextPath}/home" class="btn btn-ghost btn-sm d-inline-flex align-items-center gap-1" aria-label="Back to home">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -24,7 +24,7 @@
     <header class="auth-header">
         <h1 class="auth-header__title">Reset Password</h1>
         <p class="auth-header__subtitle">
-            Create a new, strong password to secure your JPAExercise account.
+            Create a new, strong password to secure your SpringBoot Store account.
         </p>
     </header>
 
