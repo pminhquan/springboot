@@ -1,5 +1,7 @@
 # Spring Boot JPA Online Store Management System
 
+## Project Overview
+
 This project is a Spring Boot WAR migration of the JPAExercise application.
 
 The system is an online store management application that provides:
@@ -21,12 +23,12 @@ The system is an online store management application that provides:
 - Spring Boot 4.0.0
 - Spring MVC
 - Spring Data JPA
-- Hibernate ORM
-- JSP/JSTL
+- Hibernate ORM 7
+- JSP / JSTL
 - SiteMesh Decorator 3
 - Microsoft SQL Server
 - Microsoft JDBC Driver
-- BCrypt password encryption
+- BCrypt password hashing
 - Maven WAR Packaging
 
 ---
@@ -43,10 +45,10 @@ Install the following tools before running:
 
 Database information:
 
-
+```
 Database name: jakartaJPA
 Database type: Microsoft SQL Server
-
+```
 
 ---
 
@@ -56,29 +58,29 @@ Database type: Microsoft SQL Server
 
 Open:
 
-
+```
 database.sql
-
+```
 
 using:
 
-
+```
 SQL Server Management Studio (SSMS)
-
+```
 
 Execute the script.
 
-The script will create and configure:
+The script will create:
 
-- Database: `jakartaJPA`
+- Database: jakartaJPA
 - Users table
 - Categories table
 - Products table
 - OTP Tokens table
 - Required relationships
-- Sample category and product data
+- Sample data
 
-The script also inserts sample products such as:
+Sample products:
 
 - iPhone 15 Pro
 - Samsung Galaxy S25
@@ -95,9 +97,9 @@ The script also inserts sample products such as:
 
 Open:
 
-
+```
 src/main/resources/application.properties
-
+```
 
 Configure SQL Server connection:
 
@@ -107,237 +109,366 @@ spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=jakartaJPA;en
 spring.datasource.username=<your SQL Server username>
 
 spring.datasource.password=<your SQL Server password>
+```
 
 Example:
 
+```
 Username: sa
 Password: your SQL Server password
+```
 
 The application uses:
 
+```properties
 spring.jpa.hibernate.ddl-auto=none
+```
 
 Database structure is managed through:
 
+```
 database.sql
-Run Application
+```
+
+---
+
+# Run Application
 
 Open terminal at project root.
 
-Option 1: Run directly with Maven
+## Option 1: Run using Maven
+
+```bash
 mvn spring-boot:run
-Option 2: Build WAR file
+```
+
+## Option 2: Build WAR file
+
+```bash
 mvn clean package
+```
 
-After successful build:
+Run:
 
+```bash
 java -jar target/springboot.war
+```
 
 Application URL:
 
+```
 http://localhost:8080
-Demo Account
-Administrator Account
+```
+
+---
+
+# Demo Accounts
+
+## Administrator Account
 
 Use this account to test administrator functions:
 
-Username: test_admin
-Password: password
-Role: ADMIN
+```
+Username:
+test_admin
+
+Password:
+password
+
+Role:
+ADMIN
+```
 
 Administrator features:
 
-Dashboard
-Category management
-Product management
-User management
-Customer Account
+- Dashboard
+- Category management
+- Product management
+- User management
 
-Create a customer account through:
 
-http://localhost:8080/register
+## Customer Account
+
+```
+Username:
+test_customer
+
+Password:
+password
+
+Role:
+CUSTOMER
+```
 
 Customer features:
 
-View products
-Search products
-View product details
-Update profile information
-Upload avatar
+- View products
+- Search products
+- View product details
+- Update profile information
+- Upload avatar
+
 
 Customer accounts cannot access administrator pages.
 
-Application URLs
-Function	URL
-Home	/
-Home page	/home
-Login	/login
-Register	/register
-Product list	/product
-Product detail	/products/detail?id=<product_id>
-Profile	/profile
-Admin dashboard	/admin
-Category management	/categories
-Product management	/products
-User management	/admin/users
-Main Test Functions
-1. Authentication
+---
+
+# Application URLs
+
+| Function | URL |
+|---|---|
+| Home | `/` |
+| Home page | `/home` |
+| Login | `/login` |
+| Register | `/register` |
+| Product list | `/product` |
+| Product detail | `/products/detail?id=<product_id>` |
+| Profile | `/profile` |
+| Admin dashboard | `/admin/dashboard` |
+| Category management | `/categories` |
+| Product management | `/products` |
+| User management | `/admin/users` |
+
+---
+
+# Main Test Functions
+
+## 1. Authentication
 
 URL:
 
+```
 /login
+```
 
 Test:
 
-Login with administrator account
-Login with customer account
-Logout
+- Login with administrator account
+- Login with customer account
+- Logout
+
 
 The system supports login using:
 
-Username
-Email
-2. Registration and OTP Verification
+- Username
+- Email
+
+
+---
+
+## 2. Registration and OTP Verification
 
 URL:
 
+```
 /register
+```
 
 Test:
 
-Create new account
-Verify OTP
-Activate account
-3. Password Recovery
+- Create new account
+- Verify OTP
+- Activate account
+
+
+---
+
+## 3. Password Recovery
 
 URL:
 
+```
 /forgot-password
+```
 
 Test:
 
-Request password reset
-Verify OTP
-Reset password
-4. Customer Functions
+- Request password reset
+- Verify OTP
+- Reset password
+
+
+---
+
+# Customer Functions
 
 Login using customer account.
 
-Test:
+## Product browsing
 
-Product browsing
+URL:
+
+```
 /product
+```
 
 Functions:
 
-View product list
-Search products
-Pagination
-Product details
+- View product list
+- Search products
+- Pagination
+- Product details
+
 
 Example:
 
+```
 /products/detail?id=1
+```
 
 Functions:
 
-View product information
-View category information
-Profile management
+- View product information
+- View category information
+
+
+## Profile Management
+
+URL:
+
+```
 /profile
+```
 
 Functions:
 
-Update fullname
-Update phone number
-Upload avatar image
-5. Administrator Functions
+- Update fullname
+- Update phone number
+- Upload avatar image
+
+
+---
+
+# Administrator Functions
 
 Login:
 
-Username: test_admin
-Password: password
-Dashboard
+```
+Username:
+test_admin
+
+Password:
+password
+```
+
+
+## Dashboard
 
 URL:
 
-/admin
-Category Management
+```
+/admin/dashboard
+```
+
+Functions:
+
+- View system statistics
+- View recent products
+
+
+## Category Management
 
 URL:
 
+```
 /categories
+```
 
 Functions:
 
-View categories
-Search categories
-Pagination
-Add category
-Edit category
-Delete category
-Product Management
+- View categories
+- Search categories
+- Pagination
+- Add category
+- Edit category
+- Delete category
+
+
+## Product Management
 
 URL:
 
+```
 /products
+```
 
 Functions:
 
-View products
-Search products
-Pagination
-Add product
-Edit product
-Delete product
-Upload product image
-User Management
+- View products
+- Search products
+- Pagination
+- Add product
+- Edit product
+- Delete product
+- Upload product image
+
+
+## User Management
 
 URL:
 
+```
 /admin/users
+```
 
 Functions:
 
-View users
-Search users
-Pagination
-Add user
-Edit user
-Delete user
-Authorization
+- View users
+- Search users
+- Pagination
+- Add user
+- Edit user
+- Delete user
 
-The system contains two main roles:
 
-ADMIN
+---
 
-Can access:
+# Authorization
 
-Dashboard
-Product management
-Category management
-User management
-CUSTOMER
+The system contains two roles:
+
+## ADMIN
 
 Can access:
 
-Product storefront
-Product details
-Personal profile
+- Dashboard
+- Product management
+- Category management
+- User management
+
+
+## CUSTOMER
+
+Can access:
+
+- Product storefront
+- Product details
+- Personal profile
+
 
 Customer accounts cannot access administrator pages.
 
-Upload Features
+---
+
+# Upload Features
 
 The system supports multipart upload for:
 
-User avatar
-Product images
+- User avatar
+- Product images
+
 
 Uploaded images are stored in:
 
+```
 src/main/webapp/uploads
-Project Structure
+```
+
+---
+
+# Project Structure
+
+```
 springboot
 │
 ├── src
@@ -360,9 +491,33 @@ springboot
 ├── database.sql
 ├── pom.xml
 └── README.md
-Notes
-Make sure SQL Server is running before starting the application.
-Import database.sql before running the project.
-Configure correct database username and password.
-OTP email functions require SMTP configuration for real email delivery.
-The application uses JSP views with SiteMesh decorators for interface management.
+```
+
+---
+
+# Notes
+
+- Make sure SQL Server is running before starting the application.
+- Import database.sql before running the project.
+- Configure correct database username and password.
+- OTP email functions require SMTP configuration for real email delivery.
+- The application uses JSP views with SiteMesh decorators for interface management.
+
+---
+
+# Database
+
+Database name:
+
+```
+jakartaJPA
+```
+
+Tables:
+
+```
+users
+products
+categories
+otp_tokens
+```
